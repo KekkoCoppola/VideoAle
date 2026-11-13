@@ -1,0 +1,6 @@
+{
+  "name": "Auguri Dottoressa - Meme Video Show",
+  "description": "Un meme video web interamente automatico con rullo di tamburi, coriandoli e discoteca neon ignorante per festeggiare la Dottoressa.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
