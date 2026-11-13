@@ -169,7 +169,7 @@ export const RevealStage: React.FC<RevealStageProps> = ({ elapsedMs, photoSrc })
             style={{ transform: 'rotate(-8deg)' }}
           >
             <span className="font-['Bungee'] text-sm sm:text-lg text-black">
-              110 E LODE + MEME 🎓
+              DOTTORESSA + MEME 🎓
             </span>
           </div>
         </div>

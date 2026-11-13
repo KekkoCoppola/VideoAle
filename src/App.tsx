@@ -13,13 +13,15 @@ import {
 } from './utils/showLogic';
 import { soundEngine } from './utils/soundEngine';
 
-const PHOTO_SRC = '/assets/aistudio/IMG-20261113-WA0132_49c77bd9.jpg';
+const PRIMARY_PHOTO_SRC = './assets/aistudio/IMG-20261113-WA0132_49c77bd9.jpg';
+const FALLBACK_PHOTO_SRC = './public/assets/aistudio/IMG-20261113-WA0132_49c77bd9.jpg';
 
 export default function App() {
   const [config] = useState(() =>
     parseShowQueryParams(typeof window !== 'undefined' ? window.location.search : '')
   );
   const [elapsedMs, setElapsedMs] = useState<number>(config.initialElapsedMs);
+  const [photoSrc, setPhotoSrc] = useState<string>(PRIMARY_PHOTO_SRC);
 
   const lastDrumTickRef = useRef<number>(-1);
   const revealSoundPlayedRef = useRef<boolean>(false);
@@ -30,6 +32,15 @@ export default function App() {
   useEffect(() => {
     document.body.setAttribute('data-phase', phase);
   }, [phase]);
+
+  useEffect(() => {
+    // Automatically switch to ./public/assets/... if GitHub Pages serves raw repository root from main
+    const probe = new Image();
+    probe.onerror = () => {
+      setPhotoSrc(FALLBACK_PHOTO_SRC);
+    };
+    probe.src = PRIMARY_PHOTO_SRC;
+  }, []);
 
   useEffect(() => {
     const startWallTime = performance.now() - config.initialElapsedMs;
@@ -84,8 +95,8 @@ export default function App() {
     >
       {/* Active Stage */}
       {phase === 'drumroll' && <DrumrollStage elapsedMs={elapsedMs} />}
-      {phase === 'reveal' && <RevealStage elapsedMs={elapsedMs} photoSrc={PHOTO_SRC} />}
-      {phase === 'disco' && <DiscoStage elapsedMs={elapsedMs} photoSrc={PHOTO_SRC} />}
+      {phase === 'reveal' && <RevealStage elapsedMs={elapsedMs} photoSrc={photoSrc} />}
+      {phase === 'disco' && <DiscoStage elapsedMs={elapsedMs} photoSrc={photoSrc} />}
 
       {/* Confetti Cannons & Disco Lasers Canvas */}
       <MemeCanvas

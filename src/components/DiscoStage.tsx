@@ -103,7 +103,7 @@ export const DiscoStage: React.FC<DiscoStageProps> = ({ elapsedMs, photoSrc }) =
           className="px-4 py-2 border-4 border-black font-['Bungee'] text-sm text-black shadow-[6px_6px_0px_#000]"
           style={{ backgroundColor: theme.accent }}
         >
-          🍾 110 E LODE + RAVE
+          🍾 FESTA DEVASTANTE + RAVE
         </div>
         <div
           className="px-4 py-2 border-4 border-white font-['Anton'] text-lg text-black tracking-wider shadow-[6px_6px_0px_#000]"
@@ -223,7 +223,7 @@ export const DiscoStage: React.FC<DiscoStageProps> = ({ elapsedMs, photoSrc }) =
                 transform: 'rotate(9deg)',
               }}
             >
-              110L 🔥
+              LAUREATA 🔥
             </div>
           </div>
         </div>

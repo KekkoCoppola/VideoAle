@@ -4,6 +4,7 @@ import {
   BEAT_DURATION_MS,
   DISCO_START_MS,
   DRUMROLL_DURATION_MS,
+  MEME_CAPTIONS,
   computeDiscoBounceState,
   computeDrumrollState,
   createConfettiBurst,
@@ -11,6 +12,12 @@ import {
   parseShowQueryParams,
   stepConfettiParticles,
 } from './showLogic';
+
+test('MEME_CAPTIONS does not contain 110 e lode', () => {
+  for (const caption of MEME_CAPTIONS) {
+    assert.equal(caption.toLowerCase().includes('110'), false);
+  }
+});
 
 test('getPhaseAtTime transitions cleanly from drumroll to reveal to disco', () => {
   assert.equal(getPhaseAtTime(0), 'drumroll');
